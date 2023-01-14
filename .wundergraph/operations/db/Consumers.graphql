@@ -1,0 +1,7 @@
+query {
+	consumer: db_findManyconsumer {
+		id
+		first_name
+		last_name
+	}
+}
