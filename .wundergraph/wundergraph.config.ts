@@ -53,15 +53,17 @@ configureWunderGraphApplication({
 	},
 	authentication: {
 		cookieBased: {
-			providers: [authProviders.demo()],
+			providers: [
+				authProviders.demo(),
+				authProviders.openIdConnect({
+					id: 'auth0',
+					issuer: 'https://dev-5rd72w18.us.auth0.com',
+					clientId: 'un7RrEtPepJgHclcuiaGjCutFrMmcSgG',
+					clientSecret:
+						'G9hSLrXyxZnnWrszYf-Pj2PCoDYojyXjlfXmvb3I-tmJxT9eGWBuMvi7EIDBdzlN',
+				}),
+			],
 			authorizedRedirectUris: ['http://localhost:3000'],
-			secureCookieHashKey: new EnvironmentVariable(
-				'WUNDERGRAPH_SECURE_COOKIE_HASH_KEY',
-			), // must be of length 32
-			secureCookieBlockKey: new EnvironmentVariable(
-				'WUNDERGRAPH_SECURE_COOKIE_BLOCK_KEY',
-			), // must be of length 32
-			csrfTokenSecret: new EnvironmentVariable('WUNDERGRAPH_CSRF_TOKEN_SECRET'), // must be of length 11
 		},
 	},
 	security: {

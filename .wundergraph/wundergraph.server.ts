@@ -5,6 +5,17 @@ import type { InternalClient } from './generated/wundergraph.internal.client';
 
 export default configureWunderGraphServer<HooksConfig, InternalClient>(() => ({
 	hooks: {
+		authentication: {
+			mutatingPostAuthentication: async ({ user }) => {
+				return {
+					user: {
+						...user,
+						roles: ['admin'],
+					},
+					status: 'ok',
+				};
+			},
+		},
 		queries: {},
 		mutations: {},
 	},

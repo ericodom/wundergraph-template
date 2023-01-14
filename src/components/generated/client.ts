@@ -36,6 +36,7 @@ export type UploadConfig = UploadRequestOptions<never>;
 
 export enum AuthProviderId {
 	"github" = "github",
+	"auth0" = "auth0",
 }
 
 export interface AuthProvider {
@@ -44,7 +45,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "7c876899",
+	applicationHash: "12be97ec",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.130.2",
 };
