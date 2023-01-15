@@ -1,6 +1,6 @@
-# WunderGraph Next.js Starter
+# WunderGraph Next.js 13, Postgresql, Tailwind, Auth0 Starter
 
-This example demonstrates how to use WunderGraph with Next.js. We are going to make your data-source accessible through JSON-RPC to your Next.js app.
+This template demonstrates how to use WunderGraph with Next.js 13 app directory with PostgreSQL, Tailwind CSS and Auth0
 
 ## Getting Started
 
