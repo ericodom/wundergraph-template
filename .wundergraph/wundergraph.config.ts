@@ -22,15 +22,9 @@ const db = introspect.postgresql({
 	databaseURL: new EnvironmentVariable('DATABASE_URL'),
 });
 
-// Add PostgreSQL admin databases to API
-const admin = introspect.postgresql({
-	apiNamespace: 'admin',
-	databaseURL: new EnvironmentVariable('ADMIN_DATABASE_URL'),
-});
-
 // configureWunderGraph emits the configuration
 configureWunderGraphApplication({
-	apis: [spaceX, admin, db],
+	apis: [spaceX, db],
 	server,
 	operations,
 	codeGenerators: [

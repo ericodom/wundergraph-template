@@ -18,7 +18,7 @@ export default configureWunderGraphServer<HooksConfig, InternalClient>(() => ({
 					};
 				}
 
-				const adminUser = await internalClient.queries.AdminAccountByEmail({
+				const adminUser = await internalClient.queries.AccountByEmail({
 					input: { email: user.email },
 				});
 

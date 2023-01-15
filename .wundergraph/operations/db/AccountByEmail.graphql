@@ -1,5 +1,5 @@
 query ($email: String!) {
-	account: admin_findFirstaccount(where: { email: { equals: $email } }) {
+	account: db_findFirstAccount(where: { email: { equals: $email } }) {
 		id
 		first_name
 		last_name
