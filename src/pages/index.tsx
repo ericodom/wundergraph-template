@@ -11,50 +11,50 @@ const Home: NextPage = () => {
 	const { login, logout } = useAuth();
 	const user = useUser();
 
-	const dragons = useQuery({
-		operationName: 'Dragons',
-	});
+	// const dragons = useQuery({
+	// 	operationName: 'Dragons',
+	// });
 
-	const { data: adminAccountData } = useQuery({
-		operationName: 'AdminAccountById',
-		input: {
-			accountId: 1,
-		},
-	});
+	// const { data: adminAccountData } = useQuery({
+	// 	operationName: 'AdminAccountByEmail',
+	// 	input: {
+	// 		email: 'eric@homecareintel.com',
+	// 	},
+	// });
 
-	const {
-		data: accountData,
-		mutate,
-		isValidating,
-	} = useQuery({
-		operationName: 'AccountById',
-		input: {
-			accountId: 2,
-		},
-	});
+	// const {
+	// 	data: accountData,
+	// 	mutate,
+	// 	isValidating,
+	// } = useQuery({
+	// 	operationName: 'AccountById',
+	// 	input: {
+	// 		accountId: 2,
+	// 	},
+	// });
 
-	const { data: consumerData } = useQuery({
-		operationName: 'ConsumerById',
-		input: {
-			consumerId: 1,
-		},
-	});
+	// const { data: consumerData } = useQuery({
+	// 	operationName: 'ConsumerById',
+	// 	input: {
+	// 		consumerId: 1,
+	// 	},
+	// });
 
-	const { data: consumersData } = useQuery({
-		operationName: 'Consumers',
-	});
+	// const { data: consumersData } = useQuery({
+	// 	operationName: 'Consumers',
+	// });
 
 	const refresh = () => {
-		mutate();
+		//mutate();
 	};
 
-	React.useEffect(() => {
-		console.log('test: ', accountData);
-	}, [accountData]);
+	// React.useEffect(() => {
+	// 	console.log('test: ', adminAccountData);
+	// }, [adminAccountData]);
 
-	React.useEffect(() => {
-		console.log('consumersData: ', consumersData);
-	}, [consumersData]);
+	// React.useEffect(() => {
+	// 	console.log('consumersData: ', consumersData);
+	// }, [consumersData]);
 
 	return (
 		<div>
@@ -109,7 +109,7 @@ const Home: NextPage = () => {
 							</code>{' '}
 							operation.
 						</p>
-						<code className="p-3">{JSON.stringify(dragons, null, 2)}</code>
+						{/* <code className="p-3">{JSON.stringify(dragons, null, 2)}</code> */}
 					</div>
 					<div className="flex justify-center my-8">
 						<button
@@ -151,26 +151,18 @@ const Home: NextPage = () => {
 							Login
 						</button>
 						<button
-							onClick={() => logout()}
+							onClick={() => logout({ logoutOpenidConnectProvider: true })}
 							className="flex items-center justify-center w-full h-12 px-6 font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
 						>
 							Logout
 						</button>
 					</div>
-					<p className="flex justify-center pt-10">
+					{/* <p className="flex justify-center pt-10">
 						Admin:
 						{isValidating
 							? `Loading...`
 							: adminAccountData?.account?.first_name}
-					</p>
-					<p className="flex justify-center pt-4">
-						Account:
-						{isValidating ? `Loading...` : accountData?.account?.email}
-					</p>
-					<p className="flex justify-center pt-4">
-						Consumer:
-						{isValidating ? `Loading...` : consumerData?.consumer?.first_name}
-					</p>
+					</p> */}
 				</div>
 				<footer className="flex justify-between text-gray-400">
 					<p className="pt-3">

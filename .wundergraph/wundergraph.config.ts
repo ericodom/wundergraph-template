@@ -19,15 +19,13 @@ const spaceX = introspect.graphql({
 // Add PostgreSQL databases to API
 const db = introspect.postgresql({
 	apiNamespace: 'db',
-	databaseURL:
-		'postgresql://hci_user:N0v299pe!@hci-v6-sandbox.cvwcpfnur8ep.us-east-1.rds.amazonaws.com/hci-next',
+	databaseURL: new EnvironmentVariable('DATABASE_URL'),
 });
 
 // Add PostgreSQL admin databases to API
 const admin = introspect.postgresql({
 	apiNamespace: 'admin',
-	databaseURL:
-		'postgresql://hci_user:N0v299pe!@hci-v6-sandbox.cvwcpfnur8ep.us-east-1.rds.amazonaws.com/hci-admin',
+	databaseURL: new EnvironmentVariable('ADMIN_DATABASE_URL'),
 });
 
 // configureWunderGraph emits the configuration

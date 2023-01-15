@@ -12,6 +12,9 @@ import {
 	FetchUserRequestOptions,
 } from "@wundergraph/sdk/client";
 import type {
+	AdminAccountByEmailResponse,
+	AdminAccountByEmailInput,
+	AdminAccountByEmailResponseData,
 	AdminAccountByIdResponse,
 	AdminAccountByIdInput,
 	AdminAccountByIdResponseData,
@@ -45,12 +48,15 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "12be97ec",
+	applicationHash: "2ac55ec6",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.130.2",
 };
 
 export const operationMetadata: OperationMetadata = {
+	AdminAccountByEmail: {
+		requiresAuthentication: false,
+	},
 	AdminAccountById: {
 		requiresAuthentication: false,
 	},
@@ -115,6 +121,12 @@ export const createClient = (config?: CreateClientConfig) => {
 };
 
 export type Queries = {
+	AdminAccountByEmail: {
+		input: AdminAccountByEmailInput;
+		data: AdminAccountByEmailResponseData;
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	AdminAccountById: {
 		input: AdminAccountByIdInput;
 		data: AdminAccountByIdResponseData;
@@ -152,6 +164,12 @@ export type Mutations = {};
 export type Subscriptions = {};
 
 export type LiveQueries = {
+	AdminAccountByEmail: {
+		input: AdminAccountByEmailInput;
+		data: AdminAccountByEmailResponseData;
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
 	AdminAccountById: {
 		input: AdminAccountByIdInput;
 		data: AdminAccountByIdResponseData;

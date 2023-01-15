@@ -1,8 +1,32 @@
 import * as React from 'react';
 import { AccountByIdResponse } from '../../components/generated/models';
 import { delay } from '../../utils/delay';
+import { createClient } from '../../components/generated/client';
+import { cookies } from 'next/headers';
 
-export default async function New() {
+export default async function TestServerComponent() {
+	const nextCookies = cookies();
+
+	// convert Next.js cookie arrary back to a cookie header string
+	const userCookies = nextCookies
+		.getAll()
+		.map(cookie => `${cookie.name}=${cookie.value};`)
+		.join(' ');
+
+	try {
+		const client = createClient({
+			extraHeaders: {
+				cookie: userCookies,
+			},
+		});
+
+		const user = await client.fetchUser();
+
+		console.log(`user: `, user);
+	} catch (err) {
+		console.log(`that's an error: `, err);
+	}
+
 	let data;
 	let res;
 
