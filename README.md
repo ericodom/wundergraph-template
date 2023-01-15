@@ -30,3 +30,11 @@ Each file becomes an Operation. The Operation name is not relevant, the file nam
 ## Additional Configurations
 
 - Tailwind CSS
+
+## Troubleshooting
+
+If you are having trouble with WG after updating the postgres database scheme, delete the following folders:
+
+- `.wundergraph/cache`
+- `.wundergraph/generated`
+- `src/components/generated`
