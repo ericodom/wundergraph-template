@@ -15,6 +15,9 @@ import type {
 	AccountByEmailResponse,
 	AccountByEmailInput,
 	AccountByEmailResponseData,
+	AccountByIdResponse,
+	AccountByIdInput,
+	AccountByIdResponseData,
 	DragonsResponse,
 	DragonsResponseData,
 } from "./models";
@@ -37,13 +40,16 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "ad663200",
+	applicationHash: "75f95184",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.130.1",
 };
 
 export const operationMetadata: OperationMetadata = {
 	AccountByEmail: {
+		requiresAuthentication: false,
+	},
+	AccountById: {
 		requiresAuthentication: false,
 	},
 	Dragons: {
@@ -104,6 +110,12 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	AccountById: {
+		input: AccountByIdInput;
+		data: AccountByIdResponseData;
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	Dragons: {
 		input?: undefined;
 		data: DragonsResponseData;
@@ -120,6 +132,12 @@ export type LiveQueries = {
 	AccountByEmail: {
 		input: AccountByEmailInput;
 		data: AccountByEmailResponseData;
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	AccountById: {
+		input: AccountByIdInput;
+		data: AccountByIdResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

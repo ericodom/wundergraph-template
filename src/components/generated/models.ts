@@ -4,6 +4,10 @@ export interface AccountByEmailInput {
 	email: string;
 }
 
+export interface AccountByIdInput {
+	accountId?: number;
+}
+
 export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue>;
 
 export type JSONObject = { [key: string]: JSONValue };
@@ -17,12 +21,25 @@ export interface InternalAccountByEmailInput {
 	email: string;
 }
 
+export interface InternalAccountByIdInput {
+	accountId?: number;
+}
+
 export interface InjectedAccountByEmailInput {
 	email: string;
 }
 
+export interface InjectedAccountByIdInput {
+	accountId?: number;
+}
+
 export interface AccountByEmailResponse {
 	data?: AccountByEmailResponseData;
+	errors?: ReadonlyArray<GraphQLError>;
+}
+
+export interface AccountByIdResponse {
+	data?: AccountByIdResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
 }
 
@@ -32,6 +49,16 @@ export interface DragonsResponse {
 }
 
 export interface AccountByEmailResponseData {
+	account?: {
+		id: number;
+		first_name?: string;
+		last_name?: string;
+		email: string;
+		roles?: string;
+	};
+}
+
+export interface AccountByIdResponseData {
 	account?: {
 		id: number;
 		first_name?: string;
