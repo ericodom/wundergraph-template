@@ -18,6 +18,9 @@ import type {
 	AccountByIdResponse,
 	AccountByIdInput,
 	AccountByIdResponseData,
+	CreateAccountResponse,
+	CreateAccountInput,
+	CreateAccountResponseData,
 	DragonsResponse,
 	DragonsResponseData,
 } from "./models";
@@ -40,7 +43,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "75f95184",
+	applicationHash: "6e59de9e",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.130.1",
 };
@@ -50,6 +53,9 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	AccountById: {
+		requiresAuthentication: false,
+	},
+	CreateAccount: {
 		requiresAuthentication: false,
 	},
 	Dragons: {
@@ -124,7 +130,13 @@ export type Queries = {
 	};
 };
 
-export type Mutations = {};
+export type Mutations = {
+	CreateAccount: {
+		input: CreateAccountInput;
+		data: CreateAccountResponseData;
+		requiresAuthentication: false;
+	};
+};
 
 export type Subscriptions = {};
 

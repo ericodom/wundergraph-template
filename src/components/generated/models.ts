@@ -8,6 +8,13 @@ export interface AccountByIdInput {
 	accountId?: number;
 }
 
+export interface CreateAccountInput {
+	email: string;
+	firstName: string;
+	lastName: string;
+	roles: string;
+}
+
 export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue>;
 
 export type JSONObject = { [key: string]: JSONValue };
@@ -25,12 +32,26 @@ export interface InternalAccountByIdInput {
 	accountId?: number;
 }
 
+export interface InternalCreateAccountInput {
+	email: string;
+	firstName: string;
+	lastName: string;
+	roles: string;
+}
+
 export interface InjectedAccountByEmailInput {
 	email: string;
 }
 
 export interface InjectedAccountByIdInput {
 	accountId?: number;
+}
+
+export interface InjectedCreateAccountInput {
+	email: string;
+	firstName: string;
+	lastName: string;
+	roles: string;
 }
 
 export interface AccountByEmailResponse {
@@ -40,6 +61,11 @@ export interface AccountByEmailResponse {
 
 export interface AccountByIdResponse {
 	data?: AccountByIdResponseData;
+	errors?: ReadonlyArray<GraphQLError>;
+}
+
+export interface CreateAccountResponse {
+	data?: CreateAccountResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
 }
 
@@ -65,6 +91,12 @@ export interface AccountByIdResponseData {
 		last_name?: string;
 		email: string;
 		roles?: string;
+	};
+}
+
+export interface CreateAccountResponseData {
+	db_createOneAccount?: {
+		id: number;
 	};
 }
 

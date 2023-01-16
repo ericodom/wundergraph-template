@@ -1,0 +1,17 @@
+mutation (
+	$email: String!
+	$firstName: String!
+	$lastName: String!
+	$roles: String!
+) {
+	db_createOneAccount(
+		data: {
+			email: $email
+			first_name: $firstName
+			last_name: $lastName
+			roles: $roles
+		}
+	) {
+		id
+	}
+}
