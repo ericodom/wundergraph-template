@@ -8,9 +8,11 @@ export default async function TestServerComponent() {
 	let postResults: PostByIdResponse;
 
 	try {
+		console.log('cookies: ', cookies().getAll());
+
 		const client = createClient({
 			extraHeaders: {
-				cookie: convertNextCookieToString(cookies()),
+				cookie: convertNextCookieToString(cookies().getAll()),
 			},
 		});
 
@@ -34,6 +36,7 @@ export default async function TestServerComponent() {
 		// });
 	} catch (err) {
 		console.log(`that's an error: `, err);
+		throw new Error(err);
 	}
 
 	return (
