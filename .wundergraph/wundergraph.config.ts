@@ -49,10 +49,9 @@ configureWunderGraphApplication({
 				authProviders.demo(),
 				authProviders.openIdConnect({
 					id: 'auth0',
-					issuer: 'https://dev-5rd72w18.us.auth0.com',
-					clientId: 'un7RrEtPepJgHclcuiaGjCutFrMmcSgG',
-					clientSecret:
-						'G9hSLrXyxZnnWrszYf-Pj2PCoDYojyXjlfXmvb3I-tmJxT9eGWBuMvi7EIDBdzlN',
+					issuer: new EnvironmentVariable('AUTH0_DOMAIN'),
+					clientId: new EnvironmentVariable('AUTH0_CLIENT_ID'),
+					clientSecret: new EnvironmentVariable('AUTH0_CLIENT_SECRET'),
 				}),
 			],
 			authorizedRedirectUris: ['http://localhost:3000'],

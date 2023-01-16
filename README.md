@@ -30,6 +30,7 @@ Each file becomes an Operation. The Operation name is not relevant, the file nam
 ## Additional Configurations
 
 - Tailwind CSS
+- Prisma `npx prisma migrate dev --name init`
 
 ## Troubleshooting
 

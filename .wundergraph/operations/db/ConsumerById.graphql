@@ -1,7 +1,0 @@
-query ($consumerId: Int) {
-	consumer: db_findFirstconsumer(where: { id: { equals: $consumerId } }) {
-		id
-		first_name
-		last_name
-	}
-}

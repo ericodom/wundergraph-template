@@ -12,20 +12,9 @@ import {
 	FetchUserRequestOptions,
 } from "@wundergraph/sdk/client";
 import type {
-	AdminAccountByEmailResponse,
-	AdminAccountByEmailInput,
-	AdminAccountByEmailResponseData,
-	AdminAccountByIdResponse,
-	AdminAccountByIdInput,
-	AdminAccountByIdResponseData,
-	AccountByIdResponse,
-	AccountByIdInput,
-	AccountByIdResponseData,
-	ConsumerByIdResponse,
-	ConsumerByIdInput,
-	ConsumerByIdResponseData,
-	ConsumersResponse,
-	ConsumersResponseData,
+	AccountByEmailResponse,
+	AccountByEmailInput,
+	AccountByEmailResponseData,
 	DragonsResponse,
 	DragonsResponseData,
 } from "./models";
@@ -48,25 +37,13 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "2ac55ec6",
+	applicationHash: "ad663200",
 	baseURL: "http://localhost:9991",
-	sdkVersion: "0.130.2",
+	sdkVersion: "0.130.1",
 };
 
 export const operationMetadata: OperationMetadata = {
-	AdminAccountByEmail: {
-		requiresAuthentication: false,
-	},
-	AdminAccountById: {
-		requiresAuthentication: false,
-	},
-	AccountById: {
-		requiresAuthentication: false,
-	},
-	ConsumerById: {
-		requiresAuthentication: false,
-	},
-	Consumers: {
+	AccountByEmail: {
 		requiresAuthentication: false,
 	},
 	Dragons: {
@@ -121,33 +98,9 @@ export const createClient = (config?: CreateClientConfig) => {
 };
 
 export type Queries = {
-	AdminAccountByEmail: {
-		input: AdminAccountByEmailInput;
-		data: AdminAccountByEmailResponseData;
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	AdminAccountById: {
-		input: AdminAccountByIdInput;
-		data: AdminAccountByIdResponseData;
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	AccountById: {
-		input: AccountByIdInput;
-		data: AccountByIdResponseData;
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	ConsumerById: {
-		input: ConsumerByIdInput;
-		data: ConsumerByIdResponseData;
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	Consumers: {
-		input?: undefined;
-		data: ConsumersResponseData;
+	AccountByEmail: {
+		input: AccountByEmailInput;
+		data: AccountByEmailResponseData;
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -164,33 +117,9 @@ export type Mutations = {};
 export type Subscriptions = {};
 
 export type LiveQueries = {
-	AdminAccountByEmail: {
-		input: AdminAccountByEmailInput;
-		data: AdminAccountByEmailResponseData;
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	AdminAccountById: {
-		input: AdminAccountByIdInput;
-		data: AdminAccountByIdResponseData;
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	AccountById: {
-		input: AccountByIdInput;
-		data: AccountByIdResponseData;
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	ConsumerById: {
-		input: ConsumerByIdInput;
-		data: ConsumerByIdResponseData;
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	Consumers: {
-		input?: undefined;
-		data: ConsumersResponseData;
+	AccountByEmail: {
+		input: AccountByEmailInput;
+		data: AccountByEmailResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

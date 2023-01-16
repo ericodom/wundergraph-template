@@ -19,5 +19,6 @@ model Account {
   email      String  @unique
   first_name String?
   last_name  String?
+  roles      String?
   posts      Post[]
 }
