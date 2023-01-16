@@ -1,4 +1,4 @@
-# WunderGraph Next.js 13, Postgresql, Tailwind, Auth0 Starter
+# WunderGraph Next13, Postgres, Tailwind, Auth0
 
 This template demonstrates how to use WunderGraph with Next.js 13 app directory with PostgreSQL, Tailwind CSS and Auth0
 
