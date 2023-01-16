@@ -4,9 +4,11 @@ import { delay } from '../../utils/delay';
 import { createClient } from '../../generated/client';
 import { cookies } from 'next/headers';
 
-export default async function TestServerComponent() {
+export default async function TestServerComponent({ req }) {
 	let postResults: PostByIdResponse;
 	let res;
+
+	console.log('Request Headers: ', req);
 
 	const nextCookies = cookies();
 
@@ -26,7 +28,7 @@ export default async function TestServerComponent() {
 		const user = await client.fetchUser();
 
 		// simulate a delay for the loading component to show
-		await delay(2000);
+		// await delay(2000);
 
 		postResults = await client.query({
 			operationName: 'PostById',
