@@ -5,7 +5,7 @@ import {
 	useQuery,
 	useUser,
 	withWunderGraph,
-} from '../components/generated/nextjs';
+} from '../generated/nextjs';
 
 const Home: NextPage = () => {
 	const { login, logout } = useAuth();

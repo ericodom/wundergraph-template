@@ -1,4 +1,4 @@
-import { createClient } from '../components/generated/client';
+import { createClient } from '../generated/client';
 import fetch from 'node-fetch';
 
 const seed = async () => {

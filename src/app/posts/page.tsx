@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PostByIdResponse } from '../../components/generated/models';
+import { PostByIdResponse } from '../../generated/models';
 import { delay } from '../../utils/delay';
-import { createClient } from '../../components/generated/client';
+import { createClient } from '../../generated/client';
 import { cookies } from 'next/headers';
 
 export default async function TestServerComponent() {

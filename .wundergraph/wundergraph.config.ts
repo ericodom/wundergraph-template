@@ -33,7 +33,7 @@ configureWunderGraphApplication({
 		},
 		{
 			templates: [new NextJsTemplate()],
-			path: '../src/components/generated',
+			path: '../src/generated',
 		},
 	],
 	cors: {
