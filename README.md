@@ -8,7 +8,7 @@ This template demonstrates how to use WunderGraph with Next.js 13 app directory 
 2. Go to [Auth0](https://auth0.com/) and create a new application of type "Regular Web Application"
 3. Skip the Quickstart
 4. Copy the `Domain`, `Client ID` and `Client Secret` to the clipboard
-5. Update the Auth0 entrieds int he `.env` file
+5. Update the Auth0 entrieds in the `.env` file
 6. Roll your own Postgres server and get the connection string: `postgresql://user:password@server-address/database-name`
 7. Update the `src/seed/seed.ts` file with an social email address (gmail, etc.)
 8. Install dependencies and bootstrap WunderGraph server and database
