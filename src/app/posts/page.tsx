@@ -18,6 +18,7 @@ export default async function TestServerComponent() {
 		// fetch the user to get specific user data, like customer id, roles, etc, for the query
 		const user = await client.fetchUser();
 
+		// ** OPTION #1: use the client.query method **
 		// postResults = await client.query({
 		// 	operationName: 'PostById',
 		// 	input: {
@@ -25,6 +26,7 @@ export default async function TestServerComponent() {
 		// 	},
 		// });
 
+		// ** OPTION #2: use the web fetch method **
 		const fetchPost = await fetch(
 			`http://localhost:9991/app/main/operations/PostById?postId=2`,
 		);
