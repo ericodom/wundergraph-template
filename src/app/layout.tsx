@@ -1,6 +1,6 @@
 import '../styles/global.css';
 import Link from 'next/link';
-
+import { AuthArea } from '../components/AuthArea';
 export default function RootLayout({
 	children,
 }: {
@@ -14,7 +14,7 @@ export default function RootLayout({
       */}
 			<head />
 			<body>
-				<div className="relative flex flex-col overflow-scroll dark:bg-slate-800">
+				<div className="relative flex flex-col justify-center overflow-scroll dark:bg-slate-800">
 					<div className="relative max-w-5xl mx-auto">
 						<div className="flex justify-center">
 							<div className="w-40 text-cyan-400 dark:text-white">
@@ -46,7 +46,7 @@ export default function RootLayout({
 							Use{' '}
 							<code className="font-mono font-medium text-sky-500 dark:text-sky-400">
 								<Link className="text-cyan-400 hover:text-cyan-600" href="/">
-									WunderGraph Client Components
+									Next.js 13 Server Components
 								</Link>
 							</code>{' '}
 							to make your data-source accessible through JSON-RPC to your
@@ -54,6 +54,7 @@ export default function RootLayout({
 						</p>
 					</div>
 					{children}
+					<AuthArea />
 				</div>
 			</body>
 		</html>

@@ -3,9 +3,8 @@ import {
 	AccountByEmailResponse,
 	PostByIdResponse,
 } from '../../generated/models';
-import { createClient } from '../../generated/client';
 import { cookies } from 'next/headers';
-import { convertNextCookieToString } from '../../utils/convertNextCookieToString';
+import { createClientFromCookies } from '../../utils/createClientFromCookies';
 import Link from 'next/link';
 
 export default async function TestServerComponent() {
@@ -18,11 +17,7 @@ export default async function TestServerComponent() {
 		//if (!cookies().get('user')) throw new Error('Not logged in');
 
 		if (cookies().get('user')) {
-			const client = createClient({
-				extraHeaders: {
-					cookie: convertNextCookieToString(cookies().getAll()),
-				},
-			});
+			const client = createClientFromCookies(cookies().getAll());
 
 			// fetch the user to get specific user data, like customer id, roles, etc, for the query
 			user = await client.fetchUser();
@@ -88,11 +83,12 @@ export default async function TestServerComponent() {
 						<span className="pl-1 font-mono font-bold text-amber-500">
 							Not logged in
 						</span>
-						<span className="pt-2">
-							<Link className="text-blue-500" href="/">
+
+						<code className="pt-2 font-mono font-medium text-sky-500 dark:text-sky-400">
+							<Link className="text-cyan-400 hover:text-cyan-600" href="/">
 								back to home
 							</Link>
-						</span>
+						</code>
 					</p>
 				)}
 			</div>
