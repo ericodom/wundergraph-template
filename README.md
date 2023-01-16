@@ -4,33 +4,31 @@ This template demonstrates how to use WunderGraph with Next.js 13 app directory 
 
 ## Getting Started
 
-1. Copy the `.env.example` file to `.env` and fill in the required values.
-2. Install the dependencies and run the complete example in one command:
+1. Copy the `.env.example` file to `.env`
+2. Go to [Auth0](https://auth0.com/) and create a new application of type "Regular Web Application"
+3. Skip the Quickstart
+4. Copy the `Domain`, `Client ID` and `Client Secret` to the clipboard
+5. Update the Auth0 entrieds int he `.env` file
+6. Roll your own Postgres server and get the connection string: `postgresql://user:password@server-address/database-name`
+7. Update the `src/seed/seed.ts` file with an social email address (gmail, etc.)
+8. Install dependencies and bootstrap WunderGraph server and database
 
 ```shell
-npm install && npm start
+npm install && npm run start
 ```
 
 After a while, a new browser tab will open,
 and you can start exploring the application.
 If no tab is open, navigate to [http://localhost:3000](http://localhost:3000).
 
-Running WunderGraph will automatically introspect the data-source and generate an API for you.
-
 ## GraphQL Operations
 
 You can add more Operations (e.g. Queries or Mutations) by adding more "\*.graphql" files to the directory `./wundergraph/operations`.
 Each file becomes an Operation. The Operation name is not relevant, the file name is.
 
-## Pages
-
-`/pages/index.jsx` -> Next.js 12 client side components example
-`/app/new/page.jsx` -> Next.js 13 server component example
-
 ## Additional Configurations
 
-- Tailwind CSS
-- Prisma `npx prisma migrate dev --name <name>`
+- Prisma schema changes: `npx prisma migrate dev --name <name>`
 
 ## Troubleshooting
 
