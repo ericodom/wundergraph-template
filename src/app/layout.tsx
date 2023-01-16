@@ -1,4 +1,5 @@
 import '../styles/global.css';
+import Link from 'next/link';
 
 export default function RootLayout({
 	children,
@@ -13,8 +14,8 @@ export default function RootLayout({
       */}
 			<head />
 			<body>
-				<div className="relative flex flex-col justify-center overflow-scroll dark:bg-slate-800">
-					<div className="relative max-w-5xl pt-20 mx-auto sm:pt-24 lg:pt-32">
+				<div className="relative flex flex-col overflow-scroll dark:bg-slate-800">
+					<div className="relative max-w-5xl mx-auto">
 						<div className="flex justify-center">
 							<div className="w-40 text-cyan-400 dark:text-white">
 								<svg
@@ -44,9 +45,9 @@ export default function RootLayout({
 						<p className="max-w-3xl mx-auto mt-6 text-lg text-center text-slate-600 dark:text-slate-400">
 							Use{' '}
 							<code className="font-mono font-medium text-sky-500 dark:text-sky-400">
-								<a className="text-cyan-400 hover:text-cyan-600" href="/">
+								<Link className="text-cyan-400 hover:text-cyan-600" href="/">
 									WunderGraph Client Components
-								</a>
+								</Link>
 							</code>{' '}
 							to make your data-source accessible through JSON-RPC to your
 							Next.js app.
@@ -54,7 +55,6 @@ export default function RootLayout({
 					</div>
 					{children}
 				</div>
-				);
 			</body>
 		</html>
 	);
