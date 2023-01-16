@@ -102,7 +102,7 @@ const Home: NextPage = () => {
 					<div className="flex flex-col items-center max-w-sm mx-auto">
 						<p className="mt-3 mb-8 text-center text-black/80">
 							This is the result of your{' '}
-							<code className="font-mono font-medium font-bold text-amber-500">
+							<code className="font-mono font-bold text-amber-500">
 								Dragons
 							</code>{' '}
 							operation.
