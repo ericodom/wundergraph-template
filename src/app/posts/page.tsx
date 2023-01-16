@@ -3,39 +3,34 @@ import { PostByIdResponse } from '../../generated/models';
 import { delay } from '../../utils/delay';
 import { createClient } from '../../generated/client';
 import { cookies } from 'next/headers';
+import { convertNextCookieToString } from '../../utils/convertNextCookieToString';
 
-export default async function TestServerComponent({ req }) {
+export default async function TestServerComponent() {
 	let postResults: PostByIdResponse;
-	let res;
-
-	console.log('Request Headers: ', req);
-
-	const nextCookies = cookies();
-
-	// convert Next.js cookie arrary back to a cookie header string
-	const userCookies = nextCookies
-		.getAll()
-		.map(cookie => `${cookie.name}=${cookie.value};`)
-		.join(' ');
 
 	try {
 		const client = createClient({
 			extraHeaders: {
-				cookie: userCookies,
+				cookie: convertNextCookieToString(cookies()),
 			},
 		});
 
+		// fetch the user to get specific user data, like customer id, roles, etc, for the query
 		const user = await client.fetchUser();
 
-		// simulate a delay for the loading component to show
-		// await delay(2000);
+		// postResults = await client.query({
+		// 	operationName: 'PostById',
+		// 	input: {
+		// 		postId: 2,
+		// 	},
+		// });
 
-		postResults = await client.query({
-			operationName: 'PostById',
-			input: {
-				postId: 2,
-			},
-		});
+		const fetchPost = await fetch(
+			`http://localhost:9991/app/main/operations/PostById?postId=2`,
+		);
+
+		if (!fetchPost.ok) throw new Error(fetchPost.statusText);
+		postResults = await fetchPost.json();
 	} catch (err) {
 		console.log(`that's an error: `, err);
 	}
