@@ -15,6 +15,10 @@ export interface CreateAccountInput {
 	roles: string;
 }
 
+export interface PostByIdInput {
+	postId?: number;
+}
+
 export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue>;
 
 export type JSONObject = { [key: string]: JSONValue };
@@ -39,6 +43,10 @@ export interface InternalCreateAccountInput {
 	roles: string;
 }
 
+export interface InternalPostByIdInput {
+	postId?: number;
+}
+
 export interface InjectedAccountByEmailInput {
 	email: string;
 }
@@ -54,6 +62,10 @@ export interface InjectedCreateAccountInput {
 	roles: string;
 }
 
+export interface InjectedPostByIdInput {
+	postId?: number;
+}
+
 export interface AccountByEmailResponse {
 	data?: AccountByEmailResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
@@ -66,6 +78,11 @@ export interface AccountByIdResponse {
 
 export interface CreateAccountResponse {
 	data?: CreateAccountResponseData;
+	errors?: ReadonlyArray<GraphQLError>;
+}
+
+export interface PostByIdResponse {
+	data?: PostByIdResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
 }
 
@@ -97,6 +114,14 @@ export interface AccountByIdResponseData {
 export interface CreateAccountResponseData {
 	db_createOneAccount?: {
 		id: number;
+	};
+}
+
+export interface PostByIdResponseData {
+	post?: {
+		id: number;
+		title: string;
+		content?: string;
 	};
 }
 

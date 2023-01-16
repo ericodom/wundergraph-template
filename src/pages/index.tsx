@@ -16,10 +16,10 @@ const Home: NextPage = () => {
 	// });
 
 	// const { data: adminAccountData } = useQuery({
-	// 	operationName: 'AdminAccountByEmail',
-	// 	input: {
-	// 		email: 'eric@homecareintel.com',
-	// 	},
+	// operationName: 'AdminAccountByEmail',
+	// input: {
+	// 	email: 'eric@homecareintel.com',
+	// },
 	// });
 
 	// const {

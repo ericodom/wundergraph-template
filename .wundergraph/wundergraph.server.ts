@@ -32,6 +32,8 @@ export default configureWunderGraphServer<HooksConfig, InternalClient>(() => ({
 						roles: roles,
 					},
 					status: 'ok',
+					redirect: true,
+					redirectUrl: '/posts',
 				};
 			},
 		},

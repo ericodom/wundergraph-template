@@ -41,9 +41,6 @@ export default function RootLayout({
 								</svg>
 							</div>
 						</div>
-						<h1 className="text-4xl font-extrabold tracking-tight text-center text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">
-							Server Components with WunderGraph
-						</h1>
 						<p className="max-w-3xl mx-auto mt-6 text-lg text-center text-slate-600 dark:text-slate-400">
 							Use{' '}
 							<code className="font-mono font-medium text-sky-500 dark:text-sky-400">

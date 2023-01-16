@@ -1,0 +1,7 @@
+query ($postId: Int) {
+	post: db_findFirstPost(where: { id: { equals: $postId } }) {
+		id
+		title
+		content
+	}
+}

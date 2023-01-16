@@ -21,6 +21,9 @@ import type {
 	CreateAccountResponse,
 	CreateAccountInput,
 	CreateAccountResponseData,
+	PostByIdResponse,
+	PostByIdInput,
+	PostByIdResponseData,
 	DragonsResponse,
 	DragonsResponseData,
 } from "./models";
@@ -43,7 +46,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "6e59de9e",
+	applicationHash: "c6ead67d",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.130.1",
 };
@@ -56,6 +59,9 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	CreateAccount: {
+		requiresAuthentication: false,
+	},
+	PostById: {
 		requiresAuthentication: false,
 	},
 	Dragons: {
@@ -122,6 +128,12 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	PostById: {
+		input: PostByIdInput;
+		data: PostByIdResponseData;
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	Dragons: {
 		input?: undefined;
 		data: DragonsResponseData;
@@ -150,6 +162,12 @@ export type LiveQueries = {
 	AccountById: {
 		input: AccountByIdInput;
 		data: AccountByIdResponseData;
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	PostById: {
+		input: PostByIdInput;
+		data: PostByIdResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

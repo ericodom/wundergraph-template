@@ -5,6 +5,10 @@ import { createClient } from '../../components/generated/client';
 import { cookies } from 'next/headers';
 
 export default async function TestServerComponent() {
+	let data;
+	let res;
+	let post;
+
 	const nextCookies = cookies();
 
 	// convert Next.js cookie arrary back to a cookie header string
@@ -22,13 +26,15 @@ export default async function TestServerComponent() {
 
 		const user = await client.fetchUser();
 
-		console.log(`user: `, user);
+		post = await client.query({
+			operationName: 'PostById',
+			input: {
+				postId: 2,
+			},
+		});
 	} catch (err) {
 		console.log(`that's an error: `, err);
 	}
-
-	let data;
-	let res;
 
 	// ** New version of WG will soon allow functions to be called directly from the client, instead of just web fetch
 	try {
@@ -60,7 +66,13 @@ export default async function TestServerComponent() {
 					</p>
 					<p className="flex justify-center pt-4">
 						Account:
-						{data?.account?.email}
+						<span className="pl-1 text-amber-500">{data?.account?.email}</span>
+					</p>
+					<p className="flex justify-center pt-4">
+						Post:
+						<span className="pl-1 text-amber-500">
+							{post.data?.post?.title}
+						</span>
 					</p>
 				</div>
 			</div>
