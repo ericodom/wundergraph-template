@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { AccountByIdResponse } from '../../components/generated/models';
+import { PostByIdResponse } from '../../components/generated/models';
 import { delay } from '../../utils/delay';
 import { createClient } from '../../components/generated/client';
 import { cookies } from 'next/headers';
 
 export default async function TestServerComponent() {
-	let data;
+	let postResults: PostByIdResponse;
 	let res;
-	let post;
 
 	const nextCookies = cookies();
 
@@ -26,7 +25,10 @@ export default async function TestServerComponent() {
 
 		const user = await client.fetchUser();
 
-		post = await client.query({
+		// simulate a delay for the loading component to show
+		await delay(2000);
+
+		postResults = await client.query({
 			operationName: 'PostById',
 			input: {
 				postId: 2,
@@ -34,23 +36,6 @@ export default async function TestServerComponent() {
 		});
 	} catch (err) {
 		console.log(`that's an error: `, err);
-	}
-
-	// ** New version of WG will soon allow functions to be called directly from the client, instead of just web fetch
-	try {
-		// simulate a delay
-		await delay(2000);
-
-		res = await fetch(
-			`http://localhost:9991/app/main/operations/AccountById?accountId=1`,
-		);
-
-		if (!res.ok) throw new Error(res.statusText);
-		let json = await res.json();
-
-		data = json.data as AccountByIdResponse;
-	} catch (err) {
-		console.log(err);
 	}
 
 	return (
@@ -65,13 +50,9 @@ export default async function TestServerComponent() {
 						operation.
 					</p>
 					<p className="flex justify-center pt-4">
-						Account:
-						<span className="pl-1 text-amber-500">{data?.account?.email}</span>
-					</p>
-					<p className="flex justify-center pt-4">
 						Post:
 						<span className="pl-1 text-amber-500">
-							{post.data?.post?.title}
+							{postResults?.data?.post?.title}
 						</span>
 					</p>
 				</div>

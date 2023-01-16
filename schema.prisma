@@ -4,14 +4,14 @@ datasource db {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  content   String?
-  published Boolean  @default(false)
-  author    Account  @relation(fields: [authorId], references: [id])
-  authorId  Int
+  id         Int      @id @default(autoincrement())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  title      String   @db.VarChar(255)
+  content    String?
+  published  Boolean  @default(false)
+  author     Account  @relation(fields: [author_id], references: [id])
+  author_id  Int
 }
 
 model Account {

@@ -6,10 +6,13 @@ const seed = async () => {
 		customFetch: fetch as any,
 	});
 
+	// ** UPDATE THIS EMAIL TO YOUR OWN **
+	const adminEmail = 'ericodom37@gmail.com';
+
 	const user = await client.query({
 		operationName: 'AccountByEmail',
 		input: {
-			email: 'eric@homecareintel.com',
+			email: adminEmail,
 		},
 	});
 
@@ -22,9 +25,9 @@ const seed = async () => {
 	const out = await client.mutate({
 		operationName: 'CreateAccount',
 		input: {
-			firstName: 'Eric',
-			lastName: 'Odom',
-			email: 'eric@homecareintel.com',
+			firstName: 'Admin',
+			lastName: 'User',
+			email: adminEmail,
 			roles: 'admin,user',
 		},
 	});
