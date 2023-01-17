@@ -15,6 +15,13 @@ export interface CreateAccountInput {
 	roles: string;
 }
 
+export interface CreatePostInput {
+	title: string;
+	content: string;
+	authorId: number;
+	updatedAt: string;
+}
+
 export interface PostByIdInput {
 	postId?: number;
 }
@@ -43,6 +50,13 @@ export interface InternalCreateAccountInput {
 	roles: string;
 }
 
+export interface InternalCreatePostInput {
+	title: string;
+	content: string;
+	authorId: number;
+	updatedAt: string;
+}
+
 export interface InternalPostByIdInput {
 	postId?: number;
 }
@@ -62,6 +76,13 @@ export interface InjectedCreateAccountInput {
 	roles: string;
 }
 
+export interface InjectedCreatePostInput {
+	title: string;
+	content: string;
+	authorId: number;
+	updatedAt: string;
+}
+
 export interface InjectedPostByIdInput {
 	postId?: number;
 }
@@ -78,6 +99,11 @@ export interface AccountByIdResponse {
 
 export interface CreateAccountResponse {
 	data?: CreateAccountResponseData;
+	errors?: ReadonlyArray<GraphQLError>;
+}
+
+export interface CreatePostResponse {
+	data?: CreatePostResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
 }
 
@@ -118,6 +144,12 @@ export interface AccountByIdResponseData {
 
 export interface CreateAccountResponseData {
 	db_createOneAccount?: {
+		id: number;
+	};
+}
+
+export interface CreatePostResponseData {
+	db_createOnePost?: {
 		id: number;
 	};
 }

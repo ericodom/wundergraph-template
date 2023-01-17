@@ -29,6 +29,7 @@ export default configureWunderGraphServer<HooksConfig, InternalClient>(() => ({
 				return {
 					user: {
 						...user,
+						userId: adminUser?.data?.account.id.toString(),
 						roles: roles,
 					},
 					status: 'ok',

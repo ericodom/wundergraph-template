@@ -3,6 +3,7 @@ import { AccountByEmailResponse, GetPostsResponse } from '../generated/models';
 import { cookies } from 'next/headers';
 import { createClientFromCookies } from '../utils/createClientFromCookies';
 import { PostTable } from '../components/PostTable';
+import { NotLoggedIn } from '../components/NotLoggedIn';
 
 export default async function Page() {
 	let accountResults: AccountByEmailResponse;
@@ -39,16 +40,12 @@ export default async function Page() {
 
 	return (
 		<main>
-			<div className="relative flex flex-col items-center pt-8 pb-4 ">
+			<div className="relative flex flex-col items-center pt-4 pb-4 ">
 				<div className="w-full max-w-xl px-4 rounded-2xl bg-blue-50 py-14">
 					{user && postsResponse?.data ? (
 						<PostTable postResponse={postsResponse?.data.post} />
 					) : (
-						<p className="flex flex-col items-center">
-							<span className="pl-1 font-mono font-bold text-amber-500">
-								Not logged in
-							</span>
-						</p>
+						<NotLoggedIn />
 					)}
 				</div>
 			</div>

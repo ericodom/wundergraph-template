@@ -21,6 +21,9 @@ import type {
 	CreateAccountResponse,
 	CreateAccountInput,
 	CreateAccountResponseData,
+	CreatePostResponse,
+	CreatePostInput,
+	CreatePostResponseData,
 	GetPostsResponse,
 	GetPostsResponseData,
 	PostByIdResponse,
@@ -48,7 +51,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "808f948c",
+	applicationHash: "e8cb1a4e",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.130.2",
 };
@@ -61,6 +64,9 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	CreateAccount: {
+		requiresAuthentication: false,
+	},
+	CreatePost: {
 		requiresAuthentication: false,
 	},
 	GetPosts: {
@@ -157,6 +163,11 @@ export type Mutations = {
 	CreateAccount: {
 		input: CreateAccountInput;
 		data: CreateAccountResponseData;
+		requiresAuthentication: false;
+	};
+	CreatePost: {
+		input: CreatePostInput;
+		data: CreatePostResponseData;
 		requiresAuthentication: false;
 	};
 };

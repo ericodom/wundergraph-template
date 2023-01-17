@@ -14,7 +14,7 @@ export default function RootLayout({
       */}
 			<head />
 			<body>
-				<div className="relative flex flex-col pb-8 overflow-scroll dark:bg-slate-800">
+				<div className="relative flex flex-col pb-4 overflow-scroll dark:bg-slate-800">
 					<div className="relative max-w-5xl mx-auto">
 						<div className="flex justify-center">
 							<div className="w-40 text-cyan-400 dark:text-white">
@@ -42,16 +42,6 @@ export default function RootLayout({
 								</svg>
 							</div>
 						</div>
-						<p className="max-w-3xl mx-auto mt-6 text-lg text-center text-slate-600 dark:text-slate-400">
-							Use{' '}
-							<code className="font-mono font-medium text-sky-500 dark:text-sky-400">
-								<Link className="text-cyan-400 hover:text-cyan-600" href="/">
-									Next.js 13 Server Components
-								</Link>
-							</code>{' '}
-							to make your data-source accessible through JSON-RPC to your
-							Next.js app.
-						</p>
 					</div>
 					{children}
 					<AuthArea />

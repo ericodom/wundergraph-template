@@ -1,0 +1,17 @@
+mutation (
+	$title: String!
+	$content: String!
+	$authorId: Int!
+	$updatedAt: DateTime!
+) {
+	db_createOnePost(
+		data: {
+			title: $title
+			content: $content
+			Account: { connect: { id: $authorId } }
+			updated_at: $updatedAt
+		}
+	) {
+		id
+	}
+}
