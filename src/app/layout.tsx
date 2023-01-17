@@ -14,7 +14,7 @@ export default function RootLayout({
       */}
 			<head />
 			<body>
-				<div className="relative flex flex-col justify-center overflow-scroll dark:bg-slate-800">
+				<div className="relative flex flex-col overflow-scroll dark:bg-slate-800">
 					<div className="relative max-w-5xl mx-auto">
 						<div className="flex justify-center">
 							<div className="w-40 text-cyan-400 dark:text-white">

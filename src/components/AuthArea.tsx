@@ -1,19 +1,30 @@
 'use client';
 
 import { useAuth, useUser } from '../generated/nextjs';
+import { useRouter } from 'next/navigation';
+import { useTransition } from 'react';
 
 export const AuthArea = () => {
 	const { login, logout } = useAuth();
+	const router = useRouter();
 	const user = useUser();
+	const [, startTransition] = useTransition();
 
-	console.log('user: ', user);
+	const handleLogout = async () => {
+		await logout({ logoutOpenidConnectProvider: true });
+		startTransition(() => {
+			// Refresh the current route and fetch new data from the server without
+			// losing client-side browser or React state.
+			router.refresh();
+		});
+	};
 
 	return (
 		<div className="flex flex-col self-center justify-center">
 			<div className="flex justify-center gap-2 mt-4">
 				{!user?.data ? (
 					<button
-						onClick={() => login('auth0')}
+						onClick={() => login('auth0', 'http://localhost:3000')}
 						className="flex items-center justify-center w-full h-12 px-6 font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
 					>
 						Login
@@ -21,7 +32,7 @@ export const AuthArea = () => {
 				) : null}
 				{user?.data ? (
 					<button
-						onClick={() => logout({ logoutOpenidConnectProvider: true })}
+						onClick={handleLogout}
 						className="flex items-center justify-center w-full h-12 px-6 font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
 					>
 						Logout
