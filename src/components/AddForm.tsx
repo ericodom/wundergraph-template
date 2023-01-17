@@ -12,7 +12,7 @@ type Inputs = {
 	content: string;
 };
 
-function AddPostForm<AddPostFormProps>() {
+function AddPostForm() {
 	const user = useUser();
 	const { data, error, trigger } = useMutation({
 		operationName: 'CreatePost',
