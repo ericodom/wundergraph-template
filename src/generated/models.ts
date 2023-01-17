@@ -81,6 +81,11 @@ export interface CreateAccountResponse {
 	errors?: ReadonlyArray<GraphQLError>;
 }
 
+export interface GetPostsResponse {
+	data?: GetPostsResponseData;
+	errors?: ReadonlyArray<GraphQLError>;
+}
+
 export interface PostByIdResponse {
 	data?: PostByIdResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
@@ -115,6 +120,14 @@ export interface CreateAccountResponseData {
 	db_createOneAccount?: {
 		id: number;
 	};
+}
+
+export interface GetPostsResponseData {
+	post: {
+		id: number;
+		title: string;
+		content?: string;
+	}[];
 }
 
 export interface PostByIdResponseData {

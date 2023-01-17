@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 
 export const AuthArea = () => {
-	const { login, logout } = useAuth();
 	const router = useRouter();
 	const user = useUser();
+	const { login, logout } = useAuth();
 	const [, startTransition] = useTransition();
 
 	const handleLogout = async () => {
@@ -15,6 +15,7 @@ export const AuthArea = () => {
 		startTransition(() => {
 			// Refresh the current route and fetch new data from the server without
 			// losing client-side browser or React state.
+			router.push('/');
 			router.refresh();
 		});
 	};
@@ -25,15 +26,15 @@ export const AuthArea = () => {
 				{!user?.data ? (
 					<button
 						onClick={() => login('auth0', 'http://localhost:3000')}
-						className="flex items-center justify-center w-full h-12 px-6 font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
+						className="flex items-center justify-center w-full px-6 py-2 text-sm font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
 					>
-						Login
+						{user.isValidating ? 'Loading...' : 'Login'}
 					</button>
 				) : null}
 				{user?.data ? (
 					<button
 						onClick={handleLogout}
-						className="flex items-center justify-center w-full h-12 px-6 font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
+						className="flex items-center justify-center w-full px-6 py-2 text-sm font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400"
 					>
 						Logout
 					</button>

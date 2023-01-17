@@ -1,25 +1,62 @@
+'use client';
+
+import * as React from 'react';
 import Link from 'next/link';
 
 export default function Page() {
 	return (
-		<div className="relative flex flex-col items-center p-8 sm:p-12">
-			<code className="pb-4 font-mono text-sky-500 dark:text-sky-400">
-				<Link className="text-amber-500 hover:text-amber-700" href="/">
-					{`< Back to Home`}
-				</Link>
-			</code>
-			<div className="w-full max-w-xl px-20 rounded-2xl bg-blue-50 py-14">
-				<div className="flex flex-col items-center max-w-sm mx-auto">
-					<p className="mt-3 text-center text-black/80">
-						<code className="font-mono font-medium text-sky-500 dark:text-sky-400">
-							<Link
-								className="text-amber-500 hover:text-amber-700"
-								href="/posts"
+		<div className="relative flex flex-col items-center p-8 sm:p-8">
+			<div className="w-full max-w-xl px-4 rounded-2xl bg-blue-50 py-14">
+				<div className="flex flex-col items-center gap-4 mx-auto">
+					<div className="w-[300px]">
+						<label
+							htmlFor="email"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Title
+						</label>
+						<div className="mt-1">
+							<input
+								type="text"
+								name="title"
+								id="title"
+								className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							/>
+						</div>
+					</div>
+					<div className="flex flex-col items-center mx-auto">
+						<div className="w-[300px]">
+							<label
+								htmlFor="email"
+								className="block text-sm font-medium text-gray-700"
 							>
-								Save Post
+								Content
+							</label>
+							<div className="mt-1">
+								<input
+									type="text"
+									name="content"
+									id="content"
+									className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+								/>
+							</div>
+						</div>
+					</div>
+					<div className="mt-8 sm:mt-4 sm:flex-none">
+						<code className="pb-4 pr-8 font-mono text-sky-500 dark:text-sky-400">
+							<Link className="text-amber-500 hover:text-amber-700" href="/">
+								{`Cancel`}
 							</Link>
 						</code>
-					</p>
+						<Link href="/add">
+							<button
+								type="button"
+								className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto"
+							>
+								Add post
+							</button>
+						</Link>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -21,6 +21,8 @@ import type {
 	CreateAccountResponse,
 	CreateAccountInput,
 	CreateAccountResponseData,
+	GetPostsResponse,
+	GetPostsResponseData,
 	PostByIdResponse,
 	PostByIdInput,
 	PostByIdResponseData,
@@ -46,9 +48,9 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "c6ead67d",
+	applicationHash: "808f948c",
 	baseURL: "http://localhost:9991",
-	sdkVersion: "0.130.1",
+	sdkVersion: "0.130.2",
 };
 
 export const operationMetadata: OperationMetadata = {
@@ -59,6 +61,9 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	CreateAccount: {
+		requiresAuthentication: false,
+	},
+	GetPosts: {
 		requiresAuthentication: false,
 	},
 	PostById: {
@@ -128,6 +133,12 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	GetPosts: {
+		input?: undefined;
+		data: GetPostsResponseData;
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	PostById: {
 		input: PostByIdInput;
 		data: PostByIdResponseData;
@@ -162,6 +173,12 @@ export type LiveQueries = {
 	AccountById: {
 		input: AccountByIdInput;
 		data: AccountByIdResponseData;
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	GetPosts: {
+		input?: undefined;
+		data: GetPostsResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

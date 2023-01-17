@@ -1,0 +1,7 @@
+query {
+	post: db_findManyPost {
+		id
+		title
+		content
+	}
+}
