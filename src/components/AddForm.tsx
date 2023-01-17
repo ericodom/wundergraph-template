@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useUser } from '../generated/nextjs';
 import { useMutation, withWunderGraph } from '..//generated/nextjs';
+import { useRouter } from 'next/navigation';
+import { useTransition } from 'react';
 import dayjs from 'dayjs';
 
 type Inputs = {
@@ -13,6 +15,8 @@ type Inputs = {
 };
 
 function AddPostForm() {
+	const router = useRouter();
+	const [, startTransition] = useTransition();
 	const user = useUser();
 	const { data, error, trigger } = useMutation({
 		operationName: 'CreatePost',
@@ -25,12 +29,28 @@ function AddPostForm() {
 	} = useForm<Inputs>();
 
 	const savePost: SubmitHandler<Inputs> = async event => {
-		await trigger({
-			title: event.title,
-			content: event.content,
-			authorId: +user?.data?.userId,
-			updatedAt: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-		});
+		// await trigger({
+		// 	title: event.title,
+		// 	content: event.content,
+		// 	authorId: +user?.data?.userId,
+		// 	updatedAt: dayjs().toISOString()
+		// });
+
+		const insertPost = await fetch(
+			`http://localhost:9991/operations/CreatePost`,
+			{
+				method: 'POST',
+				body: JSON.stringify({
+					title: event.title,
+					content: event.content,
+					authorId: +user?.data?.userId,
+					updatedAt: dayjs().toISOString(),
+				}),
+			},
+		);
+
+		router.push('/');
+		router.refresh();
 	};
 
 	return (

@@ -6,9 +6,9 @@ import { useTransition } from 'react';
 
 export const AuthArea = () => {
 	const router = useRouter();
+	const [, startTransition] = useTransition();
 	const user = useUser();
 	const { login, logout } = useAuth();
-	const [, startTransition] = useTransition();
 
 	const handleLogout = async () => {
 		await logout({ logoutOpenidConnectProvider: true });
