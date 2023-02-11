@@ -30,6 +30,10 @@ Each file becomes an Operation. The Operation name is not relevant, the file nam
 
 - Prisma schema changes: `npx prisma migrate dev --name <name>`
 
+## Wundergraph Cloud Configuration
+
+Add information here...
+
 ## Troubleshooting
 
 If you are having trouble with WG after updating the postgres database scheme, delete the following folders:
