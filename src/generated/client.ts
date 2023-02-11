@@ -12,9 +12,6 @@ import {
 	FetchUserRequestOptions,
 } from "@wundergraph/sdk/client";
 import type {
-	AccountByEmailResponse,
-	AccountByEmailInput,
-	AccountByEmailResponseData,
 	AccountByIdResponse,
 	AccountByIdInput,
 	AccountByIdResponseData,
@@ -51,15 +48,12 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "e8cb1a4e",
+	applicationHash: "0141410d",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.130.2",
 };
 
 export const operationMetadata: OperationMetadata = {
-	AccountByEmail: {
-		requiresAuthentication: false,
-	},
 	AccountById: {
 		requiresAuthentication: false,
 	},
@@ -127,12 +121,6 @@ export const createClient = (config?: CreateClientConfig) => {
 };
 
 export type Queries = {
-	AccountByEmail: {
-		input: AccountByEmailInput;
-		data: AccountByEmailResponseData;
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 	AccountById: {
 		input: AccountByIdInput;
 		data: AccountByIdResponseData;
@@ -175,12 +163,6 @@ export type Mutations = {
 export type Subscriptions = {};
 
 export type LiveQueries = {
-	AccountByEmail: {
-		input: AccountByEmailInput;
-		data: AccountByEmailResponseData;
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	AccountById: {
 		input: AccountByIdInput;
 		data: AccountByIdResponseData;
