@@ -41,3 +41,5 @@ If you are having trouble with WG after updating the postgres database scheme, d
 - `.wundergraph/cache`
 - `.wundergraph/generated`
 - `src/components/generated`
+
+test
