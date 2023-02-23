@@ -14,3 +14,12 @@ describe('Test Dragons API', () => {
 		expect(result.data?.spacex_dragons.length).toBe(2);
 	});
 });
+
+describe('Test Dragons API Again', () => {
+	test('dragons', async () => {
+		const result = await wg.client().query({
+			operationName: 'Dragons',
+		});
+		expect(result.data?.spacex_dragons.length).toBe(2);
+	});
+});
